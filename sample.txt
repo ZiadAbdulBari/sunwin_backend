@@ -1,0 +1,28 @@
+model Auth {
+  id            String   @id @default(uuid())
+  email         String   @unique
+  password      String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  profile       Profile?
+}
+model Profile {
+  id           String   @id @default(uuid())
+  authId       String   @unique
+  auth         Auth     @relation(fields: [authId], references: [id], onDelete: Cascade)
+  name         String
+  username     String?  @unique
+  designation  String?
+  phone        String?
+  address      String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+model Category {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  slug      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

@@ -19,7 +19,7 @@
 
     // Output options
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": ".",
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
@@ -30,6 +30,6 @@
     // Recommended for faster compilation
     "isolatedModules": true
   },
-  "include": ["src"],
+  "include": ["src", "src/config"],
   "exclude": ["node_modules", "dist"]
 }

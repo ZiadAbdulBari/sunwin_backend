@@ -66,3 +66,5 @@ temp/
 .eslintcache
 
 /generated/prisma
+
+/generated/prisma
