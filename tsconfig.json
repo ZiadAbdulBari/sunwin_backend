@@ -16,10 +16,11 @@
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": false,
     "skipLibCheck": true,
+    
 
     // Output options
     "outDir": "./dist",
-    "rootDir": ".",
+    "rootDir": "./src",
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
@@ -30,6 +31,6 @@
     // Recommended for faster compilation
     "isolatedModules": true
   },
-  "include": ["src", "src/config"],
+  "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }
