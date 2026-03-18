@@ -1,10 +1,9 @@
 import type { Request, Response } from "express";
 import * as ProductService from "./product.service.js";
 
-export const createProduct = async (req: Request, res: Response) => {
+export const createProduct = async ( req: Request, res: Response ) => {
   try {
-    const product = await ProductService.createProduct(req.body);
-
+    const product = await ProductService.createProduct(req.body, req.files);
     res.status(201).json({
       success: true,
       data: product,
