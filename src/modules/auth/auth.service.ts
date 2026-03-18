@@ -1,9 +1,9 @@
-import { prisma } from "../../config/db";
-import { hashPassword, comparePassword } from "../../utils/hash";
+import { prisma } from "../../config/db.js";
+import { hashPassword, comparePassword } from "../../utils/hash.js";
 import {
   generateAccessToken,
   generateRefreshToken,
-} from "../../utils/jwt";
+} from "../../utils/jwt.js";
 
 export const registerUser = async (data: any) => {
   const { email, password, name } = data;

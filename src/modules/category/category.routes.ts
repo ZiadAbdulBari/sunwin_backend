@@ -2,11 +2,11 @@ import { Router } from "express";
 import {
   createCategory,
   getCategories,
-} from "./category.controller";
+} from "./category.controller.js";
 
 const categoryRoutes = Router();
 
-categoryRoutes.post("/add-category", createCategory);
-categoryRoutes.get("/category-list", getCategories);
+categoryRoutes.post("/add", createCategory);
+categoryRoutes.get("/list", getCategories);
 
 export default categoryRoutes;

@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
     // Target ES version for Node.js
-    "target": "ES2023",
+    "target": "ES2020",
 
     // Use CommonJS modules for Node.js
-    "module": "CommonJS",
-    "moduleResolution": "node",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
 
     // Allow importing CommonJS modules
     "esModuleInterop": true,
@@ -14,7 +14,7 @@
     // Strict type checking
     "strict": true,
     "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
+    "exactOptionalPropertyTypes": false,
     "skipLibCheck": true,
 
     // Output options

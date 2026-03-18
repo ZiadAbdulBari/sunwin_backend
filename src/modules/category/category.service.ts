@@ -1,4 +1,4 @@
-import { prisma } from "../../config/db";
+import { prisma } from "../../config/db.js";
 
 export const createCategory = async (data: { name: string }) => {
   const slug = data.name.toLowerCase().replace(/\s+/g, "-")
