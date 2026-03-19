@@ -44,11 +44,11 @@ model Category {
 model Product {
   id          String   @id @default(uuid())
   name        String
-  description String?
-  stock       Int
   shortName String? 
+  stock       Int
+  description String?
   keyFeature  String?
-  specification String @default("")
+  specification String? @default("")
   application String?
   categoryId  String
   category    Category @relation(fields: [categoryId], references: [id])

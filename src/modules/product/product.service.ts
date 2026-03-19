@@ -6,6 +6,10 @@ type CreateProductInput = {
   description?: string;
   stock: string;
   categoryId: string;
+  shortName:string;
+  keyFeature:string;
+  specification:string;
+  application:string;
 };
 export const createProduct = async (
   data: CreateProductInput,
@@ -23,17 +27,20 @@ export const createProduct = async (
       return result;
     }),
   );
-  const product: any = await prisma.product.create({
+  const product:any = await prisma.product.create({
     data: {
       name: data.name,
-      description: data.description,
+      shortName: data.shortName,
       stock: parseInt(data.stock),
+      description: data.description,
+      keyFeature: data.keyFeature,
+      specification: data.specification,
       categoryId: data.categoryId,
+      application: data.application,
       images: {
         create: uploadedImages.map((image) => ({
           url: image.secure_url,
-          imageId: image.public_id,
-          productId: product.id,
+          imageId: image.public_id
         })),
       },
     },
@@ -42,7 +49,6 @@ export const createProduct = async (
       category: true,
     },
   });
-
   return product;
 };
 
