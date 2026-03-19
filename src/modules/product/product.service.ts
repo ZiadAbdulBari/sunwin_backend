@@ -47,7 +47,7 @@ export const createProduct = async (
 };
 
 export const getProducts = async () => {
-  return prisma.product.findMany({
+  return await prisma.product.findMany({
     include: {
       images: true,
       category: true,
