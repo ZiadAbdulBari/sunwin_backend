@@ -859,6 +859,10 @@ export const ProductScalarFieldEnum = {
   name: 'name',
   description: 'description',
   stock: 'stock',
+  shortName: 'shortName',
+  keyFeature: 'keyFeature',
+  specification: 'specification',
+  application: 'application',
   categoryId: 'categoryId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -870,6 +874,7 @@ export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeo
 export const ProductImageScalarFieldEnum = {
   id: 'id',
   url: 'url',
+  imageId: 'imageId',
   productId: 'productId'
 } as const
 

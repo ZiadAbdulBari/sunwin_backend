@@ -1,26 +1,41 @@
+import cloudinary from "../../config/cloudinary.js";
 import { prisma } from "../../config/db.js";
 
 type CreateProductInput = {
   name: string;
   description?: string;
-  stock: number;
+  stock: string;
   categoryId: string;
 };
 export const createProduct = async (
   data: CreateProductInput,
   photos: Express.Multer.File[] | any,
 ) => {
-  const product = await prisma.product.create({
+  const uploadedImages = await Promise.all(
+    photos.map(async (image:any) => {
+      const b64 = Buffer.from(image.buffer).toString("base64");
+      const dataURI = `data:${image.mimetype};base64,${b64}`;
+
+      const result = await cloudinary.uploader.upload(dataURI, {
+        resource_type: "auto"
+      });
+
+      return result;
+    }),
+  );
+  const product:any = await prisma.product.create({
     data: {
       name: data.name,
       description: data.description,
-      stock: data.stock,
+      stock: parseInt(data.stock),
       categoryId: data.categoryId,
-      // images: {
-      //   create: data.images.map((url) => ({
-      //     url,
-      //   })),
-      // },
+      images: {
+        create: uploadedImages.map((image) => ({
+          url:image.secure_url,
+          imageId:image.public_id,
+          productId: product.id
+        })),
+      },
     },
     include: {
       images: true,
