@@ -29,3 +29,33 @@ export const getProducts = async (req: Request, res: Response) => {
     });
   }
 };
+export const getCategoryProducts = async (req: Request, res: Response) => {
+  const slug = req.params.slug;
+  try {
+    const products = await ProductService.getCategoryProducts(slug);
+
+    res.status(200).json({
+      success: true,
+      data: products,
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+export const getProductDetail = async (req: Request, res: Response) => {
+  const id = req.params.id;
+  try {
+    const products = await ProductService.getProductDetail(id);
+
+    res.status(200).json({
+      success: true,
+      data: products,
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
