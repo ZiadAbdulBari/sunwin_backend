@@ -114,9 +114,9 @@ export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typ
 export const ProductScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  description: 'description',
-  stock: 'stock',
   shortName: 'shortName',
+  stock: 'stock',
+  description: 'description',
   keyFeature: 'keyFeature',
   specification: 'specification',
   application: 'application',
