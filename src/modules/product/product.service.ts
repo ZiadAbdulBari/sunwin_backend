@@ -27,10 +27,12 @@ export const createProduct = async (
       return result;
     }),
   );
+  const slug = data.name.toLowerCase().replace(/\s+/g, "-");
   const product:any = await prisma.product.create({
     data: {
       name: data.name,
       shortName: data.shortName,
+      slug:slug,
       stock: parseInt(data.stock),
       description: data.description,
       keyFeature: data.keyFeature,
@@ -51,7 +53,6 @@ export const createProduct = async (
   });
   return product;
 };
-
 export const getProducts = async () => {
   return await prisma.product.findMany({
     include: {

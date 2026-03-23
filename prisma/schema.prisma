@@ -44,6 +44,7 @@ model Category {
 model Product {
   id          String   @id @default(uuid())
   name        String
+  slug String? @unique
   shortName String? 
   stock       Int
   description String?
@@ -53,6 +54,8 @@ model Product {
   categoryId  String
   category    Category @relation(fields: [categoryId], references: [id])
   images      ProductImage[]
+  sectionId String?
+  section Section? @relation(fields: [sectionId], references: [id])
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
@@ -63,4 +66,13 @@ model ProductImage {
   imageId   String
   productId String
   product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+model Section{
+  id String @id @default(uuid())
+  name String
+  slug String @unique
+  priority String
+  products  Product[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
