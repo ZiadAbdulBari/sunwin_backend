@@ -7,20 +7,24 @@ export const createSection = async (data: any) => {
       slug: slug,
       priority: data.priority,
       products: {
-        connect: data.productIds.map((id:any) => ({ id }))
-      }
+        connect: data.productIds.map((id: any) => ({ id })),
+      },
     },
     include: {
-      products: true
-    }
+      products: true,
+    },
   });
   return section;
 };
-export const getSection = async()=>{
+export const getSection = async () => {
   const sectionList = await prisma.section.findMany({
-    include:{
-      products:true
-    }
-  })
+    include: {
+      products: {
+        include: {
+          images: true,
+        },
+      },
+    },
+  });
   return sectionList;
-}
+};
