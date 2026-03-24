@@ -6,10 +6,11 @@ type CreateProductInput = {
   description?: string;
   stock: string;
   categoryId: string;
-  shortName:string;
-  keyFeature:string;
-  specification:string;
-  application:string;
+  shortName: string;
+  keyFeature: string;
+  specification: string;
+  application: string;
+  relatedProductIds: string;
 };
 export const createProduct = async (
   data: CreateProductInput,
@@ -28,11 +29,11 @@ export const createProduct = async (
     }),
   );
   const slug = data.name.toLowerCase().replace(/\s+/g, "-");
-  const product:any = await prisma.product.create({
+  const product: any = await prisma.product.create({
     data: {
       name: data.name,
       shortName: data.shortName,
-      slug:slug,
+      slug: slug,
       stock: parseInt(data.stock),
       description: data.description,
       keyFeature: data.keyFeature,
@@ -42,13 +43,25 @@ export const createProduct = async (
       images: {
         create: uploadedImages.map((image) => ({
           url: image.secure_url,
-          imageId: image.public_id
+          imageId: image.public_id,
         })),
+      },
+      relatedProducts: {
+        create: (JSON.parse(data.relatedProductIds) ?? []).map(
+          (childId: string, index: number) => ({
+            childId,
+          }),
+        ),
       },
     },
     include: {
       images: true,
       category: true,
+      relatedProducts: {
+        include: {
+          child: true,
+        },
+      },
     },
   });
   return product;
@@ -80,6 +93,9 @@ export const getProductDetail = async (id: any) => {
     include: {
       images: true,
       category: true,
+      relatedProducts: {
+        include: { child: true },
+      },
     },
   });
 };

@@ -67,6 +67,11 @@ export type Product = Prisma.ProductModel
  */
 export type ProductImage = Prisma.ProductImageModel
 /**
+ * Model ProductRelation
+ * 
+ */
+export type ProductRelation = Prisma.ProductRelationModel
+/**
  * Model Section
  * 
  */

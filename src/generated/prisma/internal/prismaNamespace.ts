@@ -389,6 +389,7 @@ export const ModelName = {
   Category: 'Category',
   Product: 'Product',
   ProductImage: 'ProductImage',
+  ProductRelation: 'ProductRelation',
   Section: 'Section'
 } as const
 
@@ -405,7 +406,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "auth" | "profile" | "category" | "product" | "productImage" | "section"
+    modelProps: "auth" | "profile" | "category" | "product" | "productImage" | "productRelation" | "section"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -779,6 +780,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    ProductRelation: {
+      payload: Prisma.$ProductRelationPayload<ExtArgs>
+      fields: Prisma.ProductRelationFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ProductRelationFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProductRelationPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ProductRelationFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProductRelationPayload>
+        }
+        findFirst: {
+          args: Prisma.ProductRelationFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProductRelationPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ProductRelationFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProductRelationPayload>
+        }
+        findMany: {
+          args: Prisma.ProductRelationFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProductRelationPayload>[]
+        }
+        create: {
+          args: Prisma.ProductRelationCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProductRelationPayload>
+        }
+        createMany: {
+          args: Prisma.ProductRelationCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ProductRelationCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProductRelationPayload>[]
+        }
+        delete: {
+          args: Prisma.ProductRelationDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProductRelationPayload>
+        }
+        update: {
+          args: Prisma.ProductRelationUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProductRelationPayload>
+        }
+        deleteMany: {
+          args: Prisma.ProductRelationDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ProductRelationUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ProductRelationUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProductRelationPayload>[]
+        }
+        upsert: {
+          args: Prisma.ProductRelationUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProductRelationPayload>
+        }
+        aggregate: {
+          args: Prisma.ProductRelationAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateProductRelation>
+        }
+        groupBy: {
+          args: Prisma.ProductRelationGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ProductRelationGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ProductRelationCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ProductRelationCountAggregateOutputType> | number
+        }
+      }
+    }
     Section: {
       payload: Prisma.$SectionPayload<ExtArgs>
       fields: Prisma.SectionFieldRefs
@@ -956,6 +1031,16 @@ export const ProductImageScalarFieldEnum = {
 } as const
 
 export type ProductImageScalarFieldEnum = (typeof ProductImageScalarFieldEnum)[keyof typeof ProductImageScalarFieldEnum]
+
+
+export const ProductRelationScalarFieldEnum = {
+  id: 'id',
+  parentId: 'parentId',
+  childId: 'childId',
+  createdAt: 'createdAt'
+} as const
+
+export type ProductRelationScalarFieldEnum = (typeof ProductRelationScalarFieldEnum)[keyof typeof ProductRelationScalarFieldEnum]
 
 
 export const SectionScalarFieldEnum = {
@@ -1155,6 +1240,7 @@ export type GlobalOmitConfig = {
   category?: Prisma.CategoryOmit
   product?: Prisma.ProductOmit
   productImage?: Prisma.ProductImageOmit
+  productRelation?: Prisma.ProductRelationOmit
   section?: Prisma.SectionOmit
 }
 

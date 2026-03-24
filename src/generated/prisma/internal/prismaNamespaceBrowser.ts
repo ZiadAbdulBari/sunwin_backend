@@ -56,6 +56,7 @@ export const ModelName = {
   Category: 'Category',
   Product: 'Product',
   ProductImage: 'ProductImage',
+  ProductRelation: 'ProductRelation',
   Section: 'Section'
 } as const
 
@@ -139,6 +140,16 @@ export const ProductImageScalarFieldEnum = {
 } as const
 
 export type ProductImageScalarFieldEnum = (typeof ProductImageScalarFieldEnum)[keyof typeof ProductImageScalarFieldEnum]
+
+
+export const ProductRelationScalarFieldEnum = {
+  id: 'id',
+  parentId: 'parentId',
+  childId: 'childId',
+  createdAt: 'createdAt'
+} as const
+
+export type ProductRelationScalarFieldEnum = (typeof ProductRelationScalarFieldEnum)[keyof typeof ProductRelationScalarFieldEnum]
 
 
 export const SectionScalarFieldEnum = {

@@ -54,6 +54,8 @@ model Product {
   categoryId  String
   category    Category @relation(fields: [categoryId], references: [id])
   images      ProductImage[]
+  relatedProducts ProductRelation[] @relation("ParentProduct")
+  childProducts   ProductRelation[] @relation("ChildProduct")
   sectionId String?
   section Section? @relation(fields: [sectionId], references: [id])
   createdAt   DateTime @default(now())
@@ -66,6 +68,15 @@ model ProductImage {
   imageId   String
   productId String
   product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+model ProductRelation{
+  id        String   @id @default(uuid())
+  parentId  String   
+  childId   String   
+  createdAt DateTime @default(now())
+  parent Product @relation("ParentProduct", fields: [parentId], references: [id], onDelete: Cascade)
+  child  Product @relation("ChildProduct",fields: [childId], references: [id], onDelete: Cascade)
+  @@unique([parentId, childId])
 }
 model Section{
   id String @id @default(uuid())
