@@ -94,7 +94,13 @@ export const getProductDetail = async (id: any) => {
       images: true,
       category: true,
       relatedProducts: {
-        include: { child: true },
+        include: {
+          child: {
+            include: {
+              images: true,
+            },
+          },
+        },
       },
     },
   });
