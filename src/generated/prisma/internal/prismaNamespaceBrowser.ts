@@ -57,7 +57,8 @@ export const ModelName = {
   Product: 'Product',
   ProductImage: 'ProductImage',
   ProductRelation: 'ProductRelation',
-  Section: 'Section'
+  Section: 'Section',
+  Query: 'Query'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -162,6 +163,23 @@ export const SectionScalarFieldEnum = {
 } as const
 
 export type SectionScalarFieldEnum = (typeof SectionScalarFieldEnum)[keyof typeof SectionScalarFieldEnum]
+
+
+export const QueryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  whatsappNumber: 'whatsappNumber',
+  email: 'email',
+  image: 'image',
+  productName: 'productName',
+  message: 'message',
+  checked: 'checked',
+  type: 'type',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type QueryScalarFieldEnum = (typeof QueryScalarFieldEnum)[keyof typeof QueryScalarFieldEnum]
 
 
 export const SortOrder = {

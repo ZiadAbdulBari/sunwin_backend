@@ -390,7 +390,8 @@ export const ModelName = {
   Product: 'Product',
   ProductImage: 'ProductImage',
   ProductRelation: 'ProductRelation',
-  Section: 'Section'
+  Section: 'Section',
+  Query: 'Query'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -406,7 +407,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "auth" | "profile" | "category" | "product" | "productImage" | "productRelation" | "section"
+    modelProps: "auth" | "profile" | "category" | "product" | "productImage" | "productRelation" | "section" | "query"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -928,6 +929,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Query: {
+      payload: Prisma.$QueryPayload<ExtArgs>
+      fields: Prisma.QueryFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.QueryFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QueryPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.QueryFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QueryPayload>
+        }
+        findFirst: {
+          args: Prisma.QueryFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QueryPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.QueryFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QueryPayload>
+        }
+        findMany: {
+          args: Prisma.QueryFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QueryPayload>[]
+        }
+        create: {
+          args: Prisma.QueryCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QueryPayload>
+        }
+        createMany: {
+          args: Prisma.QueryCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.QueryCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QueryPayload>[]
+        }
+        delete: {
+          args: Prisma.QueryDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QueryPayload>
+        }
+        update: {
+          args: Prisma.QueryUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QueryPayload>
+        }
+        deleteMany: {
+          args: Prisma.QueryDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.QueryUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.QueryUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QueryPayload>[]
+        }
+        upsert: {
+          args: Prisma.QueryUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QueryPayload>
+        }
+        aggregate: {
+          args: Prisma.QueryAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateQuery>
+        }
+        groupBy: {
+          args: Prisma.QueryGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.QueryGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.QueryCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.QueryCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1055,6 +1130,23 @@ export const SectionScalarFieldEnum = {
 export type SectionScalarFieldEnum = (typeof SectionScalarFieldEnum)[keyof typeof SectionScalarFieldEnum]
 
 
+export const QueryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  whatsappNumber: 'whatsappNumber',
+  email: 'email',
+  image: 'image',
+  productName: 'productName',
+  message: 'message',
+  checked: 'checked',
+  type: 'type',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type QueryScalarFieldEnum = (typeof QueryScalarFieldEnum)[keyof typeof QueryScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1124,6 +1216,13 @@ export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'In
  * Reference to a field of type 'Int[]'
  */
 export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Boolean'
+ */
+export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -1242,6 +1341,7 @@ export type GlobalOmitConfig = {
   productImage?: Prisma.ProductImageOmit
   productRelation?: Prisma.ProductRelationOmit
   section?: Prisma.SectionOmit
+  query?: Prisma.QueryOmit
 }
 
 /* Types for Logging */

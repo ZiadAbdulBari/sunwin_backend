@@ -52,3 +52,8 @@ export type ProductRelation = Prisma.ProductRelationModel
  * 
  */
 export type Section = Prisma.SectionModel
+/**
+ * Model Query
+ * 
+ */
+export type Query = Prisma.QueryModel
