@@ -81,3 +81,8 @@ export type Section = Prisma.SectionModel
  * 
  */
 export type Query = Prisma.QueryModel
+/**
+ * Model CompanyProfile
+ * 
+ */
+export type CompanyProfile = Prisma.CompanyProfileModel
