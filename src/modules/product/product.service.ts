@@ -75,7 +75,8 @@ export const getProducts = async () => {
   });
 };
 export const getCategoryProducts = async (slug: any) => {
-  return await prisma.product.findMany({
+  const [products, categories] = await Promise.all([
+    prisma.product.findMany({
     where: {
       category: {
         slug: slug,
@@ -85,7 +86,10 @@ export const getCategoryProducts = async (slug: any) => {
       images: true,
       category: true,
     },
-  });
+  }),
+  prisma.category.findMany(),
+  ])
+  return { products, categories };
 };
 export const getProductDetail = async (id: any) => {
   return await prisma.product.findUnique({
