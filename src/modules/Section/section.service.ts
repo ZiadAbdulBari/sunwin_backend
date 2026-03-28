@@ -28,3 +28,20 @@ export const getSection = async () => {
   });
   return sectionList;
 };
+export const updateSection = async (payload:any)=>{
+  const slug = payload.name.toLowerCase().replace(/\s+/g, "-");
+  return await prisma.section.update({
+    where:{
+      id:payload.id
+    },
+    data:{
+      name:payload.name,
+      slug:slug,
+      priority:payload.priority,
+      products:{
+        set:[],
+        connect: payload.productIds.map((id: string) => ({ id }))
+      }
+    }
+  })
+}

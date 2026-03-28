@@ -79,7 +79,7 @@ model ProductRelation{
   @@unique([parentId, childId])
 }
 model Section{
-  id String @id @default(uuid())
+  id String @id @default(uuid()) @unique
   name String
   slug String @unique
   priority String
