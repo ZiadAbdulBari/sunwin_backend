@@ -27,8 +27,6 @@ export const getSection = async (req: Request, res: Response) => {
   }
 };
 export const updateSection = async (req:Request,res:Response)=>{
-  console.log(req.body);
-  return
   try{
     await SectionService.updateSection(req.body);
     res.status(200).json({
