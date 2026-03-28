@@ -17,3 +17,18 @@ export const getCategories = async () => {
     orderBy: { createdAt: "desc" },
   });
 };
+export const deteleCategory = async (id: string) => {
+  return await prisma.category.delete({
+    where: { id },
+  });
+};
+// export const updateCategory = async (data:any) => {
+//   const slug = data.name.toLowerCase().replace(/\s+/g, "-")
+//   return await prisma.category.update({
+//     where: { data.id},
+//     data:{
+//       name:data.name,
+//       slug:slug
+//     }
+//   });
+// };
