@@ -22,13 +22,13 @@ export const deteleCategory = async (id: string) => {
     where: { id },
   });
 };
-// export const updateCategory = async (data:any) => {
-//   const slug = data.name.toLowerCase().replace(/\s+/g, "-")
-//   return await prisma.category.update({
-//     where: { data.id},
-//     data:{
-//       name:data.name,
-//       slug:slug
-//     }
-//   });
-// };
+export const updateCategory = async (payload:any) => {
+  const slug = payload.name.toLowerCase().replace(/\s+/g, "-")
+  return await prisma.category.update({
+    where: { id:payload.id },
+    data: {
+      name: payload.name,
+      slug: payload.slug,
+    },
+  });
+};

@@ -34,7 +34,7 @@ model Profile {
   updatedAt    DateTime @updatedAt
 }
 model Category {
-  id        String   @id @default(uuid())
+  id        String   @id @default(uuid()) @unique
   name      String   @unique
   slug      String   @unique
   products  Product[]

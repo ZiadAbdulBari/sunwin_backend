@@ -37,7 +37,7 @@ export const deteleCategory = async (req: Request, res: Response) => {
   const data = req.body;
   console.log(data)
   try {
-    const removeCategory = await CategoryService.deteleCategory(data.id);
+    await CategoryService.deteleCategory(data.id);
     res.status(200).json({
       success: true,
     });
@@ -48,3 +48,17 @@ export const deteleCategory = async (req: Request, res: Response) => {
     });
   }
 };
+export const updateCategory = async (req:Request,res:Response)=>{
+  const data = req.body;
+  try {
+    await CategoryService.updateCategory(data);
+    res.status(200).json({
+      success: true,
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+}
