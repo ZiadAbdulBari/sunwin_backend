@@ -26,16 +26,27 @@ export const getSection = async (req: Request, res: Response) => {
     });
   }
 };
-export const updateSection = async (req:Request,res:Response)=>{
-  try{
+export const updateSection = async (req: Request, res: Response) => {
+  try {
     await SectionService.updateSection(req.body);
     res.status(200).json({
-      success: true
+      success: true,
     });
-  }
-  catch(error:any){
+  } catch (error: any) {
     res.status(400).json({
       message: error.message,
     });
   }
-}
+};
+export const deleteSection = async (req: Request, res: Response) => {
+  try {
+    await SectionService.deleteSection(req.body);
+    res.status(200).json({
+      success: true,
+    });
+  } catch (error: any) {
+    res.status(400).json({
+      message: error.message,
+    });
+  }
+};

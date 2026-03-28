@@ -45,3 +45,10 @@ export const updateSection = async (payload:any)=>{
     }
   })
 }
+export const deleteSection = async (data:any)=>{
+  return await prisma.section.delete({
+    where:{
+      id:data.id
+    }
+  })
+}
