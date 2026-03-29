@@ -58,7 +58,7 @@ export type Section = Prisma.SectionModel
  */
 export type Query = Prisma.QueryModel
 /**
- * Model CompanyProfile
+ * Model BrandInfo
  * 
  */
-export type CompanyProfile = Prisma.CompanyProfileModel
+export type BrandInfo = Prisma.BrandInfoModel

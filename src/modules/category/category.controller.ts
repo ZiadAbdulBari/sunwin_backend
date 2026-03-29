@@ -17,7 +17,6 @@ export const createCategory = async (req: Request, res: Response) => {
     });
   }
 };
-
 export const getCategories = async (req: Request, res: Response) => {
   try {
     const categories = await CategoryService.getCategories();

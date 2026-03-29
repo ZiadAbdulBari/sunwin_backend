@@ -392,7 +392,7 @@ export const ModelName = {
   ProductRelation: 'ProductRelation',
   Section: 'Section',
   Query: 'Query',
-  CompanyProfile: 'CompanyProfile'
+  BrandInfo: 'BrandInfo'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -408,7 +408,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "auth" | "profile" | "category" | "product" | "productImage" | "productRelation" | "section" | "query" | "companyProfile"
+    modelProps: "auth" | "profile" | "category" | "product" | "productImage" | "productRelation" | "section" | "query" | "brandInfo"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1004,77 +1004,77 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    CompanyProfile: {
-      payload: Prisma.$CompanyProfilePayload<ExtArgs>
-      fields: Prisma.CompanyProfileFieldRefs
+    BrandInfo: {
+      payload: Prisma.$BrandInfoPayload<ExtArgs>
+      fields: Prisma.BrandInfoFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.CompanyProfileFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyProfilePayload> | null
+          args: Prisma.BrandInfoFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BrandInfoPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.CompanyProfileFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyProfilePayload>
+          args: Prisma.BrandInfoFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BrandInfoPayload>
         }
         findFirst: {
-          args: Prisma.CompanyProfileFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyProfilePayload> | null
+          args: Prisma.BrandInfoFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BrandInfoPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.CompanyProfileFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyProfilePayload>
+          args: Prisma.BrandInfoFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BrandInfoPayload>
         }
         findMany: {
-          args: Prisma.CompanyProfileFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyProfilePayload>[]
+          args: Prisma.BrandInfoFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BrandInfoPayload>[]
         }
         create: {
-          args: Prisma.CompanyProfileCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyProfilePayload>
+          args: Prisma.BrandInfoCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BrandInfoPayload>
         }
         createMany: {
-          args: Prisma.CompanyProfileCreateManyArgs<ExtArgs>
+          args: Prisma.BrandInfoCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.CompanyProfileCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyProfilePayload>[]
+          args: Prisma.BrandInfoCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BrandInfoPayload>[]
         }
         delete: {
-          args: Prisma.CompanyProfileDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyProfilePayload>
+          args: Prisma.BrandInfoDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BrandInfoPayload>
         }
         update: {
-          args: Prisma.CompanyProfileUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyProfilePayload>
+          args: Prisma.BrandInfoUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BrandInfoPayload>
         }
         deleteMany: {
-          args: Prisma.CompanyProfileDeleteManyArgs<ExtArgs>
+          args: Prisma.BrandInfoDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.CompanyProfileUpdateManyArgs<ExtArgs>
+          args: Prisma.BrandInfoUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.CompanyProfileUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyProfilePayload>[]
+          args: Prisma.BrandInfoUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BrandInfoPayload>[]
         }
         upsert: {
-          args: Prisma.CompanyProfileUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$CompanyProfilePayload>
+          args: Prisma.BrandInfoUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BrandInfoPayload>
         }
         aggregate: {
-          args: Prisma.CompanyProfileAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateCompanyProfile>
+          args: Prisma.BrandInfoAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateBrandInfo>
         }
         groupBy: {
-          args: Prisma.CompanyProfileGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.CompanyProfileGroupByOutputType>[]
+          args: Prisma.BrandInfoGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BrandInfoGroupByOutputType>[]
         }
         count: {
-          args: Prisma.CompanyProfileCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.CompanyProfileCountAggregateOutputType> | number
+          args: Prisma.BrandInfoCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BrandInfoCountAggregateOutputType> | number
         }
       }
     }
@@ -1222,18 +1222,24 @@ export const QueryScalarFieldEnum = {
 export type QueryScalarFieldEnum = (typeof QueryScalarFieldEnum)[keyof typeof QueryScalarFieldEnum]
 
 
-export const CompanyProfileScalarFieldEnum = {
+export const BrandInfoScalarFieldEnum = {
   id: 'id',
   name: 'name',
   logo: 'logo',
-  aboutus: 'aboutus',
   mobile: 'mobile',
   email: 'email',
   address: 'address',
-  country: 'country'
+  zip: 'zip',
+  country: 'country',
+  map: 'map',
+  website: 'website',
+  facebook: 'facebook',
+  linkedin: 'linkedin',
+  whatsapp: 'whatsapp',
+  about: 'about'
 } as const
 
-export type CompanyProfileScalarFieldEnum = (typeof CompanyProfileScalarFieldEnum)[keyof typeof CompanyProfileScalarFieldEnum]
+export type BrandInfoScalarFieldEnum = (typeof BrandInfoScalarFieldEnum)[keyof typeof BrandInfoScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1431,7 +1437,7 @@ export type GlobalOmitConfig = {
   productRelation?: Prisma.ProductRelationOmit
   section?: Prisma.SectionOmit
   query?: Prisma.QueryOmit
-  companyProfile?: Prisma.CompanyProfileOmit
+  brandInfo?: Prisma.BrandInfoOmit
 }
 
 /* Types for Logging */

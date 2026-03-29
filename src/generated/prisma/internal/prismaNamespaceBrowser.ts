@@ -59,7 +59,7 @@ export const ModelName = {
   ProductRelation: 'ProductRelation',
   Section: 'Section',
   Query: 'Query',
-  CompanyProfile: 'CompanyProfile'
+  BrandInfo: 'BrandInfo'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -183,18 +183,24 @@ export const QueryScalarFieldEnum = {
 export type QueryScalarFieldEnum = (typeof QueryScalarFieldEnum)[keyof typeof QueryScalarFieldEnum]
 
 
-export const CompanyProfileScalarFieldEnum = {
+export const BrandInfoScalarFieldEnum = {
   id: 'id',
   name: 'name',
   logo: 'logo',
-  aboutus: 'aboutus',
   mobile: 'mobile',
   email: 'email',
   address: 'address',
-  country: 'country'
+  zip: 'zip',
+  country: 'country',
+  map: 'map',
+  website: 'website',
+  facebook: 'facebook',
+  linkedin: 'linkedin',
+  whatsapp: 'whatsapp',
+  about: 'about'
 } as const
 
-export type CompanyProfileScalarFieldEnum = (typeof CompanyProfileScalarFieldEnum)[keyof typeof CompanyProfileScalarFieldEnum]
+export type BrandInfoScalarFieldEnum = (typeof BrandInfoScalarFieldEnum)[keyof typeof BrandInfoScalarFieldEnum]
 
 
 export const SortOrder = {
