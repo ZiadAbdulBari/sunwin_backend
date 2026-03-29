@@ -24,3 +24,7 @@ export const createBrand = async (data: any, photo: any) => {
     },
   });
 };
+export const getBrandInfo = async ()=>{
+    const info = await prisma.brandInfo.findMany();
+    return info;
+}

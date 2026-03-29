@@ -13,3 +13,17 @@ export const createBrand = async (req: Request, res: Response) => {
     });
   }
 };
+export const getBrandInfo = async (req: Request, res: Response) => {
+  try {
+    const info = await BrandService.getBrandInfo();
+     res.status(201).json({
+      success: true,
+      data:info
+    });
+  } catch (error:any) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
