@@ -1,6 +1,6 @@
 import cloudinary from "../../config/cloudinary.js";
 import { prisma } from "../../config/db.js";
-
+import { uploadFile,deleteFile } from "../../config/s3.js";
 type CreateProductInput = {
   name: string;
   description?: string;
@@ -16,16 +16,21 @@ export const createProduct = async (
   data: CreateProductInput,
   photos: Express.Multer.File[] | any,
 ) => {
+  // const uploadedImages = await Promise.all(
+  //   photos.map(async (image: any) => {
+  //     const b64 = Buffer.from(image.buffer).toString("base64");
+  //     const dataURI = `data:${image.mimetype};base64,${b64}`;
+
+  //     const result = await cloudinary.uploader.upload(dataURI, {
+  //       resource_type: "auto",
+  //     });
+
+  //     return result;
+  //   }),
+  // );
   const uploadedImages = await Promise.all(
     photos.map(async (image: any) => {
-      const b64 = Buffer.from(image.buffer).toString("base64");
-      const dataURI = `data:${image.mimetype};base64,${b64}`;
-
-      const result = await cloudinary.uploader.upload(dataURI, {
-        resource_type: "auto",
-      });
-
-      return result;
+      return await uploadFile(image, "products");
     }),
   );
   const slug = data.name.toLowerCase().replace(/\s+/g, "-");
@@ -42,8 +47,8 @@ export const createProduct = async (
       application: data.application,
       images: {
         create: uploadedImages.map((image) => ({
-          url: image.secure_url,
-          imageId: image.public_id,
+          url: image.url,
+          imageId: image.imageId,
         })),
       },
       relatedProducts: {
@@ -65,6 +70,22 @@ export const createProduct = async (
     },
   });
   return product;
+};
+export const deleteProduct = async (id: string) => {
+  const product = await prisma.product.findUnique({
+    where: { id },
+    include: { images: true },
+  });
+
+  if (!product) throw new Error("Product not found");
+
+  await Promise.all(
+    product.images.map((image) => deleteFile(image.imageId))
+  );
+
+  return await prisma.product.delete({
+    where: { id },
+  });
 };
 export const getProducts = async () => {
   return await prisma.product.findMany({

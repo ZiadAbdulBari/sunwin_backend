@@ -15,7 +15,18 @@ export const createProduct = async ( req: Request, res: Response ) => {
     });
   }
 };
-
+export const deleteProduct = async (req: Request, res: Response) => {
+  try {
+    await ProductService.deleteProduct(req.body.id);
+    res.status(200).json({
+      success: true,
+    });
+  } catch (error: any) {
+    res.status(400).json({
+      message: error.message,
+    });
+  }
+};
 export const getProducts = async (req: Request, res: Response) => {
   try {
     const products = await ProductService.getProducts();
