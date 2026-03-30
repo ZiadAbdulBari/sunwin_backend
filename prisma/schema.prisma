@@ -103,7 +103,8 @@ model Query{
 model BrandInfo{
   id String @id @default(uuid()) @unique
   name String 
-  logo String 
+  logo String
+  logoId String
   mobile String 
   email String 
   address String 

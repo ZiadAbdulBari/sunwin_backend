@@ -1226,6 +1226,7 @@ export const BrandInfoScalarFieldEnum = {
   id: 'id',
   name: 'name',
   logo: 'logo',
+  logoId: 'logoId',
   mobile: 'mobile',
   email: 'email',
   address: 'address',

@@ -1,15 +1,15 @@
-import cloudinary from "../../config/cloudinary.js";
+
+import { uploadFile } from "../../config/s3.js";
 import { prisma } from "../../config/db.js";
 
 export const createBrand = async (data: any, photo: any) => {
-  const uploadedImage = await cloudinary.uploader.upload(
-    `data:${photo.mimetype};base64,${Buffer.from(photo.buffer).toString("base64")}`,
-    { resource_type: "auto" },
-  );
+  const uploadedImage = await uploadFile(photo, "brands");
+  
   await prisma.brandInfo.create({
     data: {
       name: data.name,
       logo: uploadedImage.url,
+      logoId:uploadedImage.imageId,
       mobile: data.mobile,
       email: data.email,
       address: data.address,
