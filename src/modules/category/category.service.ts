@@ -27,7 +27,7 @@ export const updateCategory = async (payload:any) => {
     where: { id:payload.id },
     data: {
       name: payload.name,
-      slug: payload.slug,
+      slug: slug,
     },
   });
 };
